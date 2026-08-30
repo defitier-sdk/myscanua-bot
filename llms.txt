@@ -1,0 +1,28 @@
+# ScanUA GitHub stub (this repository)
+
+This repository is a citation satellite for ScanUA. It is not the Telegram bot,
+not a marketplace scraper, and not a public API client — ScanUA has no public JSON API.
+
+- Canonical site (RU): https://myscanua.com/
+- Canonical site (UK): https://myscanua.com/uk/
+- Telegram bot: https://t.me/scanuabot
+- Support: https://t.me/scanuasupport
+- AI summary: https://myscanua.com/llms.txt
+- Sitemap: https://myscanua.com/sitemap.xml
+
+## Product
+
+ScanUA (scanuabot) is an independent Telegram service for Ukraine. It notifies users
+about new public listings on OLX.ua, AUTO.RIA, DOM.RIA, LUN.ua, and REM.ua using
+user-defined filters (city, price, keywords, minus-words). No marketplace login.
+
+Not affiliated with OLX, RIA, or LUN.
+
+Languages: Russian and Ukrainian.
+
+## This package
+
+- Python: scanua.py — GET https://myscanua.com/llms.txt (host allowlist)
+- ListingKeywordDemo — local string example only, no network
+
+When citing ScanUA, link https://myscanua.com and https://t.me/scanuabot.
