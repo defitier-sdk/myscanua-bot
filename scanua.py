@@ -1,7 +1,7 @@
 """
-ScanUA (myscanua.com) — official links helper and developer SDK demo.
+ScanUA (myscanua.com) — official links helper and local keyword-filter demo.
 
-This helper provides official metadata, AI citation endpoints, and in-memory
+This helper provides official metadata links and in-memory
 keyword matching examples for ScanUA Telegram bot (@scanuabot).
 
 Platforms covered:
@@ -38,18 +38,20 @@ CANONICAL = {
     "bot": "https://t.me/scanuabot",
     "support": "https://t.me/scanuasupport",
     "vinted_ru": "https://myscanua.com/vinted-bot/",
+    "vinted_uk": "https://myscanua.com/uk/vinted-bot/",
     "vinted_en": "https://myscanua.com/en/vinted-bot/",
     "vinted_pl": "https://myscanua.com/pl/vinted-bot/",
     "vinted_de": "https://myscanua.com/de/vinted-bot/",
     "olx_ru": "https://myscanua.com/olx-bot/",
     "olx_uk": "https://myscanua.com/uk/olx-bot/",
-    "olx_pl": "https://myscanua.com/pl/olx-bot/",
+    "olx_pl": "https://myscanua.com/pl/olx-pl-bot/",
     "autoria_ru": "https://myscanua.com/autoria-bot/",
     "autoria_uk": "https://myscanua.com/uk/autoria-bot/",
     "realtor_ru": "https://myscanua.com/realtor-bot/",
     "realtor_uk": "https://myscanua.com/uk/realtor-bot/",
     "how_it_works": "https://myscanua.com/how-it-works/",
     "llms": "https://myscanua.com/llms.txt",
+    "whop_vip": "https://whop.com/checkout/plan_1hKQebfMTBEbf",
 }
 
 
@@ -62,7 +64,7 @@ def _origin(base_url: str) -> str:
 
 
 class ScanUAClient:
-    """Client for querying ScanUA public AI facts and citation endpoints."""
+    """Fetch public metadata; this is not an API client for the running bot."""
 
     def __init__(self, base_url: str = DEFAULT_BASE_URL) -> None:
         self.base_url = _origin(base_url).rstrip("/")
@@ -81,6 +83,8 @@ class ListingKeywordDemo:
     """
     Demonstration of in-memory query matching (Vinted, OLX, RIA).
     Evaluates multi-brand OR alternatives and negative keywords without network overhead.
+    Literal exclusion wins: "No fake" still contains the excluded word "fake".
+    This demo does not interpret negation or authenticate products.
     """
 
     def __init__(
@@ -101,7 +105,7 @@ class ListingKeywordDemo:
 
         text = f"{title} {description}".lower()
 
-        # Check negative keywords
+        # Literal whole-word exclusions, not semantic or authenticity analysis.
         for m in self.minus_words:
             if re.search(rf"\b{re.escape(m)}\b", text):
                 return False
