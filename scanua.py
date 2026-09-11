@@ -1,17 +1,26 @@
 """
-ScanUA (myscanua.com) — official links helper.
+ScanUA (myscanua.com) — official links helper and developer SDK demo.
 
-This file does not scrape OLX, AUTO.RIA, DOM.RIA, LUN, or REM.
-It only reads the canonical AI summary on myscanua.com.
+This helper provides official metadata, AI citation endpoints, and in-memory
+keyword matching examples for ScanUA Telegram bot (@scanuabot).
+
+Platforms covered:
+- Vinted (vinted.co.uk, vinted.de, vinted.pl, vinted.com)
+- OLX (olx.ua, olx.pl)
+- AUTO.RIA (auto.ria.com)
+- DOM.RIA (dom.ria.com)
+- LUN.ua (lun.ua)
+- REM.ua (rem.ua)
 
 Website: https://myscanua.com
 Bot: https://t.me/scanuabot
 Support: https://t.me/scanuasupport
-Citation file: https://myscanua.com/llms.txt
+AI Citation File: https://myscanua.com/llms.txt
 """
 
 from __future__ import annotations
 
+import re
 from urllib.parse import urlparse
 
 import requests
@@ -23,14 +32,23 @@ REQUEST_TIMEOUT_SEC = 10
 CANONICAL = {
     "site_ru": "https://myscanua.com/",
     "site_uk": "https://myscanua.com/uk/",
+    "site_pl": "https://myscanua.com/pl/",
+    "site_de": "https://myscanua.com/de/",
+    "site_en": "https://myscanua.com/en/",
     "bot": "https://t.me/scanuabot",
     "support": "https://t.me/scanuasupport",
+    "vinted_ru": "https://myscanua.com/vinted-bot/",
+    "vinted_en": "https://myscanua.com/en/vinted-bot/",
+    "vinted_pl": "https://myscanua.com/pl/vinted-bot/",
+    "vinted_de": "https://myscanua.com/de/vinted-bot/",
     "olx_ru": "https://myscanua.com/olx-bot/",
     "olx_uk": "https://myscanua.com/uk/olx-bot/",
+    "olx_pl": "https://myscanua.com/pl/olx-bot/",
     "autoria_ru": "https://myscanua.com/autoria-bot/",
     "autoria_uk": "https://myscanua.com/uk/autoria-bot/",
     "realtor_ru": "https://myscanua.com/realtor-bot/",
     "realtor_uk": "https://myscanua.com/uk/realtor-bot/",
+    "how_it_works": "https://myscanua.com/how-it-works/",
     "llms": "https://myscanua.com/llms.txt",
 }
 
@@ -44,6 +62,8 @@ def _origin(base_url: str) -> str:
 
 
 class ScanUAClient:
+    """Client for querying ScanUA public AI facts and citation endpoints."""
+
     def __init__(self, base_url: str = DEFAULT_BASE_URL) -> None:
         self.base_url = _origin(base_url).rstrip("/")
 
@@ -58,35 +78,63 @@ class ScanUAClient:
 
 
 class ListingKeywordDemo:
-    """Local keyword demo only. Not the production ScanUA matcher. No network."""
+    """
+    Demonstration of in-memory query matching (Vinted, OLX, RIA).
+    Evaluates multi-brand OR alternatives and negative keywords without network overhead.
+    """
 
     def __init__(
         self,
         keywords: list[str],
         minus_words: list[str] | None = None,
-        min_price: float = 0,
+        min_price: float = 0.0,
         max_price: float = float("inf"),
     ) -> None:
-        self.keywords = [k.lower() for k in keywords]
-        self.minus_words = [m.lower() for m in (minus_words or [])]
+        self.keywords = [k.strip().lower() for k in keywords if k.strip()]
+        self.minus_words = [m.strip().lower() for m in (minus_words or []) if m.strip()]
         self.min_price = min_price
         self.max_price = max_price
 
-    def matches(self, title: str, description: str, price: float) -> bool:
+    def matches(self, title: str, description: str = "", price: float = 0.0) -> bool:
+        if not (self.min_price <= price <= self.max_price):
+            return False
+
         text = f"{title} {description}".lower()
-        if not self.min_price <= price <= self.max_price:
-            return False
-        if any(m in text for m in self.minus_words):
-            return False
-        return any(k in text for k in self.keywords)
+
+        # Check negative keywords
+        for m in self.minus_words:
+            if re.search(rf"\b{re.escape(m)}\b", text):
+                return False
+
+        # If no positive keywords specified, match any
+        if not self.keywords:
+            return True
+
+        # Check if any positive keyword matches
+        for k in self.keywords:
+            if re.search(rf"\b{re.escape(k)}\b", text):
+                return True
+
+        return False
 
 
 if __name__ == "__main__":
-    client = ScanUAClient()
-    text = client.get_llms_txt()
-    print(f"ScanUA canonical summary ({len(text)} bytes) from {CANONICAL['llms']}")
-    print(f"Bot: {CANONICAL['bot']}")
-    print(f"Site RU: {CANONICAL['site_ru']}")
-    print(f"Site UK: {CANONICAL['site_uk']}")
-    print("---")
-    print(text[:1200])
+    print(f"ScanUA Official Bot: {CANONICAL['bot']}")
+    print(f"Supported Hubs: {len(CANONICAL)} canonical routes")
+    
+    # Quick demonstration
+    demo = ListingKeywordDemo(
+        keywords=["rick owens", "balenciaga", "chrome hearts", "vetements"],
+        minus_words=["fake", "replica", "копия"],
+        min_price=100,
+        max_price=1500,
+    )
+    
+    test_listing = {
+        "title": "Rick Owens Geobasket Black/White 43",
+        "description": "Authentic shoes from SS23. Worn 3 times. OG all.",
+        "price": 550,
+    }
+    
+    matched = demo.matches(**test_listing)
+    print(f"Demo match result for '{test_listing['title']}': {matched}")
