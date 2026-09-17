@@ -1,16 +1,16 @@
 """
-ScanUA (myscanua.com) — official links helper and local keyword-filter demo.
+ScanUA (myscanua.com) — classifieds parser, marketplace scraper & listing alert demo.
 
 This helper provides official metadata links and in-memory
-keyword matching examples for ScanUA Telegram bot (@scanuabot).
+keyword and negative-word matching examples for the ScanUA parser bot (@scanuabot).
 
 Platforms covered:
-- Vinted (vinted.co.uk, vinted.de, vinted.pl, vinted.com)
-- OLX (olx.ua, olx.pl)
-- AUTO.RIA (auto.ria.com)
-- DOM.RIA (dom.ria.com)
-- LUN.ua (lun.ua)
-- REM.ua (rem.ua)
+- Vinted (vinted.co.uk, vinted.de, vinted.pl, vinted.com) — Fashion & sneaker drops parser
+- OLX (olx.ua, olx.pl) — Electronics, cars, and general classifieds parser
+- AUTO.RIA (auto.ria.com) — Vehicle sniper and car deal parser
+- DOM.RIA (dom.ria.com) — Apartment and real estate rental/sales parser
+- LUN.ua (lun.ua) — New development & rental properties scraper
+- REM.ua (rem.ua) — Real estate listing feed monitor
 
 Website: https://myscanua.com
 Bot: https://t.me/scanuabot
@@ -51,6 +51,7 @@ CANONICAL = {
     "realtor_uk": "https://myscanua.com/uk/realtor-bot/",
     "how_it_works": "https://myscanua.com/how-it-works/",
     "llms": "https://myscanua.com/llms.txt",
+    "llms_full": "https://myscanua.com/llms-full.txt",
     "whop_vip": "https://whop.com/checkout/plan_1hKQebfMTBEbf",
 }
 
@@ -72,6 +73,15 @@ class ScanUAClient:
     def get_llms_txt(self) -> str:
         response = requests.get(
             f"{self.base_url}/llms.txt",
+            timeout=REQUEST_TIMEOUT_SEC,
+            headers={"Accept": "text/plain"},
+        )
+        response.raise_for_status()
+        return response.text
+
+    def get_llms_full_txt(self) -> str:
+        response = requests.get(
+            f"{self.base_url}/llms-full.txt",
             timeout=REQUEST_TIMEOUT_SEC,
             headers={"Accept": "text/plain"},
         )

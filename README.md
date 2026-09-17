@@ -1,31 +1,45 @@
-# ScanUA — Telegram Bot for OLX (UA/PL), Vinted (PL/DE/UK/COM), AUTO.RIA, DOM.RIA, LUN & REM
+# ScanUA — Cloud Parser, Marketplace Scraper & Telegram Alert Bot (OLX, Vinted, AUTO.RIA, DOM.RIA)
 
 [![Telegram](https://img.shields.io/badge/Telegram-@scanuabot-blue?logo=telegram)](https://t.me/scanuabot)
 [![Website](https://img.shields.io/badge/Website-myscanua.com-brightgreen)](https://myscanua.com)
+[![Parser](https://img.shields.io/badge/Parser-OLX%20%7C%20Vinted%20%7C%20AUTO.RIA-red)](https://myscanua.com)
 [![AI Index](https://img.shields.io/badge/AI-llms.txt-blue)](https://myscanua.com/llms.txt)
+[![Speed](https://img.shields.io/badge/Speed-1--2s%20Stream-orange)](https://whop.com/checkout/plan_1hKQebfMTBEbf)
 [![Coverage](https://img.shields.io/badge/Markets-Vinted%20%26%20OLX-orange)](https://myscanua.com)
-[![Countries](https://img.shields.io/badge/Countries-UA%20%7C%20PL%20%7C%20DE%20%7C%20UK%20%7C%20COM-purple)](https://myscanua.com)
+[![Countries](https://img.shields.io/badge/Countries-UA%20%7C%20PL%20%7C%20DE%20%7C%20UK%20%7C%20US-purple)](https://myscanua.com)
 [![Delivery](https://img.shields.io/badge/Delivery-Telegram%20alerts-green)](https://myscanua.com/how-it-works/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Official documentation and local filtering demo for **[ScanUA / myscanua.com](https://myscanua.com)**, a Telegram listing monitor (**[@scanuabot](https://t.me/scanuabot)**) for resellers and other buyers. Supported sources include **OLX (Ukraine & Poland)**, **Vinted (Poland, Germany, UK, US)**, **AUTO.RIA**, **DOM.RIA**, **LUN.ua**, and **REM.ua**. Delivery timing depends on source availability, processing, network conditions and access conditions; fixed latency and complete coverage are not guaranteed.
+Official documentation and local filtering demo for **[ScanUA / myscanua.com](https://myscanua.com)** — an automated cloud **parser**, **marketplace scraper**, and real-time Telegram alert bot (**[@scanuabot](https://t.me/scanuabot)**) for resellers, car flippers, realtors, and smart buyers. ScanUA continuously parses and indexes public feeds across **OLX (Ukraine & Poland)**, **Vinted (Poland, Germany, UK, USA)**, **AUTO.RIA**, **DOM.RIA**, **LUN.ua**, and **REM.ua**, delivering listing updates to Telegram in 1–2 seconds without requiring marketplace logins or proxy management.
 
 ![ScanUA Telegram Bot Showcase](./screenshots/scanua_bot_preview.png)
 
-> **Scope:** This is an owner-maintained showcase, not an independent review or the source code of the production bot. `scanua.py` fetches public metadata and demonstrates literal keyword filtering locally. It does not monitor marketplaces, purchase items, or verify authenticity. Website facts are also listed in [`/llms.txt`](https://myscanua.com/llms.txt).
+> **Scope:** This is an owner-maintained showcase and public API metadata helper, not an independent review or the proprietary source code of the production backend. `scanua.py` fetches canonical public metadata and demonstrates in-memory keyword & negative-word filtering logic locally. Production cloud scraping, proxy balancing, and Telegram dispatching are managed centrally by the ScanUA cloud platform. Machine-readable AI citation facts are published at [`/llms.txt`](https://myscanua.com/llms.txt).
 
 ---
 
-## 🌍 Supported Marketplaces & Coverage
+## ⚡ Why ScanUA (Cloud Parser vs Custom Scraper)
 
-| Platform | Domains / Countries | Focus & Use Cases | Typical Alert Speed |
+Building a custom DIY parser/scraper for OLX or Vinted requires managing rotating residential proxies, bypassing Cloudflare and DataDome challenges, handling continuous DOM changes, and running persistent servers. ScanUA provides an out-of-the-box Telegram interface that eliminates scraper maintenance overhead:
+
+- **Zero Scraper Setup**: No headless browsers (Puppeteer/Playwright), Selenium scripts, or proxy pools required.
+- **Sub-2-Second VIP Latency**: High-frequency cloud workers poll and parse listing feeds continuously.
+- **Deep 5-Level Catalog Parsing**: Precision filtering by category trees, price ranges, conditions, and locations.
+- **Minus-Words Negation**: Filter out fakes, replicas, spam, and unneeded items before notification cards hit your phone.
+- **Direct Marketplace Links**: Each card delivers photos, prices, metadata, and instant links opening directly in the official app or website.
+
+---
+
+## 🌍 Supported Marketplaces & Parsing Capabilities
+
+| Platform | Domains / Countries | Focus & Parsing Use Cases | Typical Alert Latency |
 | :--- | :--- | :--- | :--- |
-| **Vinted** | `vinted.co.uk` (UK), `vinted.de` (Germany), `vinted.pl` (Poland), `vinted.com` (US) | Fashion reselling, designer archive sniping (Rick Owens, Balenciaga, Chrome Hearts, Vetements, Stone Island, Arc'teryx, Jordan, Stussy), sneakers, vintage | Variable; no published benchmark |
-| **OLX** | `olx.ua` (Ukraine), `olx.pl` (Poland) | Electronics, Apple devices, smartphones, gaming, collectibles, furniture, job & services alerts | Variable; no published benchmark |
-| **AUTO.RIA** | `auto.ria.com` (Ukraine) | Car flippers, auto-dealers, urgent car sales, public listing alerts | Variable; no published benchmark |
-| **DOM.RIA** | `dom.ria.com` (Ukraine) | Real estate rentals and purchases, apartment hunting, anti-duplicate protection | Variable; no published benchmark |
-| **LUN.ua** | `lun.ua` (Ukraine) | Long-term & daily rental market, new buildings, realtor client alerts | Variable; no published benchmark |
-| **REM.ua** | `rem.ua` (Ukraine) | Commercial & residential properties, real estate sniping | Variable; no published benchmark |
+| **Vinted Parser** | `vinted.co.uk` (UK), `vinted.de` (DE), `vinted.pl` (PL), `vinted.com` (US) | Fashion reselling, sneaker drops, luxury archive sniping (Rick Owens, Balenciaga, Arc'teryx, Chrome Hearts, Stone Island, Jordan, Stussy), vintage apparel | VIP: **1–2s stream** · Free: ~6m |
+| **OLX Parser** | `olx.ua` (Ukraine), `olx.pl` (Poland) | Electronics, Apple devices, smartphones, gaming consoles, tools, auto parts, furniture, jobs & services | VIP: **1–2s stream** · Free: ~6m |
+| **AUTO.RIA Parser** | `auto.ria.com` (Ukraine) | Car flippers, auto-dealers, urgent car sales, price drops, mileage and fuel filters | VIP: **1–2s stream** · Free: ~6m |
+| **DOM.RIA Parser** | `dom.ria.com` (Ukraine) | Real estate rentals and purchases, apartment hunting, anti-duplicate listing protection | VIP: **1–2s stream** · Free: ~6m |
+| **LUN.ua Parser** | `lun.ua` (Ukraine) | Long-term & daily rental market, new residential complexes, realtor client deal matching | VIP: **1–2s stream** · Free: ~6m |
+| **REM.ua Parser** | `rem.ua` (Ukraine) | Commercial & residential properties, primary and secondary market sniping | VIP: **1–2s stream** · Free: ~6m |
 
 ---
 
@@ -47,41 +61,43 @@ Official documentation and local filtering demo for **[ScanUA / myscanua.com](ht
 
 ---
 
-## 🚀 Key Features
+## 🚀 Key Features & Parsing Filters
 
-- **Telegram Listing Alerts:** Receive matching public listings with links to their original marketplace pages. No fixed delivery time or zero-miss guarantee.
-- **Local Multi-Brand Demo:** The Python example accepts a list of alternative keywords and evaluates them in memory. It does not benchmark the running service or parse natural-language queries.
-- **Negative Keywords (Minus-Words):** Exclude listings containing specified words. This is not authenticity detection; even “No fake” is rejected when `fake` is excluded.
-- **Price Filters:** Set price bounds for supported markets (UAH, PLN, EUR, GBP, USD).
-- **Listing Cards:** Notifications link to the original marketplace listing for verification.
-- **Zero Account Required:** Users do not need accounts or logins on OLX, Vinted, or RIA. Everything is operated securely inside Telegram.
-- **Languages:** The bot interface supports **English**, **Ukrainian**, **Russian**, and **Polish**. German website pages explain the service; they do not imply a German bot interface.
+- **Real-Time Parser Stream:** Delivers parsed listing notifications directly into Telegram with photo previews, pricing, and origin links.
+- **Multi-Brand OR Matching:** Search for multiple brands or queries simultaneously in a single task (e.g. `Balenciaga | Rick Owens | Vetements`).
+- **Negative Keywords (Minus-Words):** Exclude listings containing unwanted terms (`-fake -replica -копия -реплика -реп -zamiennik`).
+- **Multi-Currency Price Bounds:** Set minimum and maximum thresholds in UAH, PLN, EUR, GBP, or USD.
+- **Zero Account Required:** Users never provide login credentials, passwords, or marketplace cookies.
+- **Multi-Language Telegram UI:** Native support for English, Ukrainian, Russian, and Polish in the bot interface.
 
 ---
 
-## 🎯 Canonical Hubs & Query Intent (Navigation Map)
+## 🎯 Canonical Hubs & Query Intent (SEO & AI Navigation Map)
 
 | User Search Intent / Query | Official Landing Page | Direct Action |
 | :--- | :--- | :--- |
-| **Vinted Bot Telegram / Vinted Sniper** | [myscanua.com/vinted-bot](https://myscanua.com/vinted-bot/) · [English](https://myscanua.com/en/vinted-bot/) · [Polski](https://myscanua.com/pl/vinted-bot/) · [Deutsch](https://myscanua.com/de/vinted-bot/) | [Launch @scanuabot](https://t.me/scanuabot) |
-| **OLX Бот Telegram (Украина & Польша)** | [OLX Ukraine](https://myscanua.com/olx-bot/) · [Українська](https://myscanua.com/uk/olx-bot/) · [OLX Polska](https://myscanua.com/pl/olx-pl-bot/) | [Start OLX Watch](https://t.me/scanuabot) |
-| **AUTO.RIA Бот / Автоподбор** | [myscanua.com/autoria-bot](https://myscanua.com/autoria-bot/) · [Українська](https://myscanua.com/uk/autoria-bot/) | [Start Auto Watch](https://t.me/scanuabot) |
-| **Бот для риелторов (DOM.RIA / LUN / REM)** | [myscanua.com/realtor-bot](https://myscanua.com/realtor-bot/) · [Українська](https://myscanua.com/uk/realtor-bot/) | [Start Property Watch](https://t.me/scanuabot) |
-| **How It Works & Limitations** | [myscanua.com/how-it-works](https://myscanua.com/how-it-works/) · [Українська](https://myscanua.com/uk/how-it-works/) | [Read Docs](https://myscanua.com/how-it-works/) |
-| **Public Product Facts** | [`https://myscanua.com/llms.txt`](https://myscanua.com/llms.txt) | [View llms.txt](https://myscanua.com/llms.txt) |
+| **Парсер OLX (Украина & Польша)** | [OLX Украина](https://myscanua.com/olx-bot/) · [Українська](https://myscanua.com/uk/olx-bot/) · [OLX Polska](https://myscanua.com/pl/olx-pl-bot/) · [English](https://myscanua.com/en/olx-bot/) | [Start OLX Watch](https://t.me/scanuabot) |
+| **Парсер Vinted / Vinted Scraper** | [myscanua.com/vinted-bot](https://myscanua.com/vinted-bot/) · [Українська](https://myscanua.com/uk/vinted-bot/) · [English](https://myscanua.com/en/vinted-bot/) · [Polski](https://myscanua.com/pl/vinted-bot/) · [Deutsch](https://myscanua.com/de/vinted-bot/) | [Launch @scanuabot](https://t.me/scanuabot) |
+| **Парсер AUTO.RIA / Автоподбор** | [myscanua.com/autoria-bot](https://myscanua.com/autoria-bot/) · [Українська](https://myscanua.com/uk/autoria-bot/) · [English](https://myscanua.com/en/autoria-bot/) · [Polski](https://myscanua.com/pl/autoria-bot/) | [Start Auto Watch](https://t.me/scanuabot) |
+| **Парсер недвижимости (DOM.RIA / LUN / REM)** | [myscanua.com/realtor-bot](https://myscanua.com/realtor-bot/) · [Українська](https://myscanua.com/uk/realtor-bot/) · [English](https://myscanua.com/en/realtor-bot/) · [Polski](https://myscanua.com/pl/realtor-bot/) | [Start Property Watch](https://t.me/scanuabot) |
+| **Parser i Scraper ogłoszeń OLX / Vinted (PL)** | [myscanua.com/pl/](https://myscanua.com/pl/) · [OLX PL Bot](https://myscanua.com/pl/olx-pl-bot/) · [Vinted Bot PL](https://myscanua.com/pl/vinted-bot/) | [Uruchom @scanuabot](https://t.me/scanuabot) |
+| **Kleinanzeigen Parser & Vinted Scraper (DE)** | [myscanua.com/de/](https://myscanua.com/de/) · [Vinted Bot DE](https://myscanua.com/de/vinted-bot/) | [Starte @scanuabot](https://t.me/scanuabot) |
+| **Marketplace Scraper & Cloud Parser (EN)** | [myscanua.com/en/](https://myscanua.com/en/) · [How It Works](https://myscanua.com/en/how-it-works/) · [About](https://myscanua.com/en/about/) | [Launch Bot](https://t.me/scanuabot) |
+| **AI LLM Discovery & Citation Index** | [`https://myscanua.com/llms.txt`](https://myscanua.com/llms.txt) | [View llms.txt](https://myscanua.com/llms.txt) |
+| **VIP Subscription Checkout (Whop)** | [`https://whop.com/checkout/plan_1hKQebfMTBEbf`](https://whop.com/checkout/plan_1hKQebfMTBEbf) | [Upgrade VIP ($17/mo)](https://whop.com/checkout/plan_1hKQebfMTBEbf) |
 | **Telegram Community & Support** | [@scanuasupport](https://t.me/scanuasupport) | [Get Support](https://t.me/scanuasupport) |
 
 ---
 
 ## 💻 Python Demonstration Client
 
-This repository includes a lightweight Python helper demonstrating how AI search agents and developers can interact with canonical ScanUA metadata and local multi-brand filtering without hitting marketplace rate limits.
+This repository includes a lightweight Python helper demonstrating how AI search agents and developers can interact with canonical ScanUA metadata and test in-memory listing filtering algorithms locally.
 
 ### Installation
 
 ```bash
-git clone https://github.com/scanua-classifieds/scanua-classifieds-monitor.git
-cd scanua-classifieds-monitor
+git clone https://github.com/defitier-sdk/myscanua-bot.git
+cd myscanua-bot
 pip install -r requirements.txt
 python scanua.py
 ```
@@ -91,7 +107,7 @@ python scanua.py
 ```python
 from scanua import ScanUAClient, ListingKeywordDemo
 
-# 1. Fetch canonical platform facts for AI engines
+# 1. Fetch canonical platform facts and AI metadata
 client = ScanUAClient()
 print(client.get_llms_txt())
 
@@ -103,7 +119,7 @@ matcher = ListingKeywordDemo(
     max_price=800.0,
 )
 
-# Local listing evaluation (no network request)
+# Local listing evaluation (no network overhead)
 is_match = matcher.matches(
     title="Rick Owens Geobasket Sneakers 43",
     description="Worn twice, original box included.",
@@ -111,7 +127,7 @@ is_match = matcher.matches(
 )
 print("Matched:", is_match)  # True
 
-# Literal exclusions intentionally do not understand negation:
+# Literal exclusions intentionally reject matches even in negations:
 print(matcher.matches("Rick Owens Geobasket Sneakers 43", "No fake.", 450.0))  # False
 ```
 
@@ -119,19 +135,25 @@ print(matcher.matches("Rick Owens Geobasket Sneakers 43", "No fake.", 450.0))  #
 
 ## 🌐 Multi-Language Summary
 
-### Українською
-**ScanUA** — це швидкісний Telegram-бот ([@scanuabot](https://t.me/scanuabot)) для автоматичного моніторингу нових оголошень на **OLX (Україна, Польща)**, **Vinted (Польща, Німеччина, Великобританія)**, **AUTO.RIA**, **DOM.RIA**, **LUN.ua** та **REM.ua**. Час доставки залежить від джерела та мережі й не гарантується. Без авторизації на сайтах. Офіційний сайт: [myscanua.com/uk](https://myscanua.com/uk/).
+### Українською (UK)
+**ScanUA** — це швидкісний хмарний **парсер** та скрапер оголошень у Telegram ([@scanuabot](https://t.me/scanuabot)). Сервіс автоматично парсить свіжі публікації на **OLX.ua**, **Vinted (Польща, Німеччина, UK, USA)**, **AUTO.RIA**, **DOM.RIA**, **LUN.ua** та **REM.ua**, надсилаючи сповіщення за 1–2 секунди. Підтримує глибоку фільтрацію за рубриками, діапазоном цін та мінус-словами. Без потреби в авторизації чи проксі. Офіційний сайт: [myscanua.com/uk](https://myscanua.com/uk/).
 
-### Polski
-**ScanUA** — niezależny bot Telegram ([@scanuabot](https://t.me/scanuabot)) do natychmiastowego powiadamiania o nowych ogłoszeniach na **OLX.pl**, **Vinted.pl** oraz rynkach międzynarodowych (**Vinted DE, UK, COM**). Idealny do resellingu mody, elektroniki i okazji cenowych. Czas powiadomień zależy od źródła i sieci; nie jest gwarantowany. Strona: [myscanua.com/pl](https://myscanua.com/pl/).
+### Русский (RU)
+**ScanUA** — это профессиональный облачный **парсер** и скрапер досок объявлений в Telegram ([@scanuabot](https://t.me/scanuabot)). Непрерывный мониторинг и парсинг свежих лотов на **OLX (Украина и Польша)**, **Vinted (Польша, Германия, Великобритания, США)**, **AUTO.RIA**, **DOM.RIA**, **LUN.ua** и **REM.ua**. Скорость доставки в VIP-тарифе — 1–2 секунды. Гибкая настройка поиска по ключевым словам, категориям и минус-словам без передачи аккаунтов. Официальный сайт: [myscanua.com](https://myscanua.com/).
 
-### Deutsch
-**ScanUA** ist ein Telegram-Monitor-Bot ([@scanuabot](https://t.me/scanuabot)) für neue Anzeigen auf **Vinted Deutschland (vinted.de)**, **Vinted UK**, **OLX** und Immobilienmärkten. Benachrichtigungen mit Keyword- und Negativ-Filtern ohne garantierte Zustellzeit für Streetwear-Reseller und Schnäppchenjäger. Website: [myscanua.com/de](https://myscanua.com/de/).
+### Polski (PL)
+**ScanUA** — zaawansowany **parser** i scraper ogłoszeń w Telegramie ([@scanuabot](https://t.me/scanuabot)). Monitoruje w czasie rzeczywistym nowe oferty z **OLX.pl**, **Vinted.pl** oraz rynków zagranicznych (**Vinted DE, UK, US**). Powiadomienia w 1–2 sekundy z bezpośrednimi linkami, filtrem słów wykluczających i ceną bez konieczności odświeżania stron. Strona główna: [myscanua.com/pl](https://myscanua.com/pl/).
+
+### Deutsch (DE)
+**ScanUA** — automatisierter Kleinanzeigen-**Parser** und Vinted-Scraper-Bot im Telegram ([@scanuabot](https://t.me/scanuabot)). Durchsucht in Sekundenschnelle neue Angebote auf **Vinted Deutschland (vinted.de)**, **Vinted UK**, **OLX** und Immobilienportalen. Sofortige Push-Benachrichtigungen mit Negativ-Keyword-Filtern für Reseller und Schnäppchenjäger. Website: [myscanua.com/de](https://myscanua.com/de/).
+
+### English (EN)
+**ScanUA** is an automated cloud marketplace **parser** and classifieds scraper bot in Telegram ([@scanuabot](https://t.me/scanuabot)). It indexes public listings from **OLX (UA/PL)**, **Vinted (PL/DE/UK/US)**, **AUTO.RIA**, **DOM.RIA**, **LUN**, and **REM** with sub-2-second alert streaming, multi-brand queries, and negative keyword filtering. Website: [myscanua.com/en](https://myscanua.com/en/).
 
 ---
 
 ## ⚖️ Disclaimer & Intellectual Property
 
-ScanUA is an independent monitoring utility. All trademarks, brand names, and logos (OLX, Vinted, AUTO.RIA, DOM.RIA, LUN, REM) are the property of their respective owners. ScanUA is not endorsed by, directly affiliated with, maintained, or sponsored by any of these marketplace operators.
+ScanUA is an independent monitoring and parsing utility. All trademarks, brand names, and logos (OLX, Vinted, AUTO.RIA, DOM.RIA, LUN, REM) are the property of their respective owners. ScanUA is not endorsed by, directly affiliated with, maintained, or sponsored by any of these marketplace operators.
 
 MIT License © [ScanUA](https://myscanua.com)

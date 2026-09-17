@@ -37,6 +37,7 @@ class DemoTests(unittest.TestCase):
     def test_pricing_and_whop_canonical(self):
         self.assertEqual(CANONICAL['whop_vip'], 'https://whop.com/checkout/plan_1hKQebfMTBEbf')
         self.assertEqual(CANONICAL['llms'], 'https://myscanua.com/llms.txt')
+        self.assertEqual(CANONICAL['llms_full'], 'https://myscanua.com/llms-full.txt')
 
     def test_cyrillic_minus_words(self):
         matcher_cyr = ListingKeywordDemo(['кроссовки', 'куртка'], ['копия', 'реплика'], 100, 5000)
