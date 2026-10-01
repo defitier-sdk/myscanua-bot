@@ -34,7 +34,7 @@ Building a custom DIY parser/scraper for OLX or Vinted requires managing rotatin
 
 | Platform | Domains / Countries | Focus & Parsing Use Cases | Typical Alert Latency |
 | :--- | :--- | :--- | :--- |
-| **Vinted Parser** | `vinted.co.uk` (UK), `vinted.de` (DE), `vinted.pl` (PL), `vinted.com` (US) | Fashion reselling, sneaker drops, luxury archive sniping (Rick Owens, Balenciaga, Arc'teryx, Chrome Hearts, Stone Island, Jordan, Stussy), vintage apparel | VIP: **1–2s stream** · Free: ~6m |
+| **Vinted Parser & Sniper** | `vinted.co.uk` (UK), `vinted.de` (DE), `vinted.pl` (PL), `vinted.com` (US) | Fashion reselling, sneaker drops, luxury archive sniping (Rick Owens, Balenciaga, Arc'teryx, Chrome Hearts, Stone Island), **1-Click Buy / Instant Reserve** | SuperVIP: **0–1s stream** · VIP: 1–2s · Free: ~6m |
 | **OLX Parser** | `olx.ua` (Ukraine), `olx.pl` (Poland) | Electronics, Apple devices, smartphones, gaming consoles, tools, auto parts, furniture, jobs & services | VIP: **1–2s stream** · Free: ~6m |
 | **AUTO.RIA Parser** | `auto.ria.com` (Ukraine) | Car flippers, auto-dealers, urgent car sales, price drops, mileage and fuel filters | VIP: **1–2s stream** · Free: ~6m |
 | **DOM.RIA Parser** | `dom.ria.com` (Ukraine) | Real estate rentals and purchases, apartment hunting, anti-duplicate listing protection | VIP: **1–2s stream** · Free: ~6m |
@@ -63,6 +63,8 @@ Building a custom DIY parser/scraper for OLX or Vinted requires managing rotatin
 
 ## 🚀 Key Features & Parsing Filters
 
+- **⚡ 1-Click Buy / Auto-Reserve on Vinted (Автопокупка в 1 клик):** Direct checkout shortcut button (`/transaction/buy/{id}`) included with every Vinted notification card. Opens the marketplace checkout instantly and locks the item for 15 minutes in your active browser session with zero ban risk.
+- **🚀 Sub-Second Vinted Stream (0–1s latency):** High-frequency catalog polling designed specifically for high-demand apparel and sneaker sniping.
 - **Real-Time Parser Stream:** Delivers parsed listing notifications directly into Telegram with photo previews, pricing, and origin links.
 - **Multi-Brand OR Matching:** Search for multiple brands or queries simultaneously in a single task (e.g. `Balenciaga | Rick Owens | Vetements`).
 - **Negative Keywords (Minus-Words):** Exclude listings containing unwanted terms (`-fake -replica -копия -реплика -реп -zamiennik`).

@@ -1,5 +1,5 @@
 import unittest
-from scanua import CANONICAL, ListingKeywordDemo
+from scanua import CANONICAL, ListingKeywordDemo, get_vinted_checkout_url
 
 class DemoTests(unittest.TestCase):
     def setUp(self):
@@ -49,6 +49,15 @@ class DemoTests(unittest.TestCase):
         self.assertFalse(self.matcher.matches('Rick Owens [fake]', price=100))
         self.assertFalse(self.matcher.matches('Rick Owens (replica)', price=100))
         self.assertTrue(self.matcher.matches('Rick Owens (authentic)', price=100))
+
+    def test_vinted_checkout_url(self):
+        url_pl = get_vinted_checkout_url("vinted.pl", 12345678)
+        self.assertEqual(url_pl, "https://vinted.pl/transaction/buy/12345678")
+        url_de = get_vinted_checkout_url("https://www.vinted.de/", "87654321")
+        self.assertEqual(url_de, "https://www.vinted.de/transaction/buy/87654321")
+        url_uk = get_vinted_checkout_url("vinted.co.uk", 999)
+        self.assertEqual(url_uk, "https://vinted.co.uk/transaction/buy/999")
+
 
 if __name__ == '__main__':
     unittest.main()

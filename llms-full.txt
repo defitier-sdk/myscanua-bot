@@ -51,6 +51,8 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
   - Condition filters to eliminate worn or defective items.
   - Price constraints in target currency.
   - Negative words to reject counterfeits (-fake -replica -реплика -копия -rep -zamiennik).
+- **1-Click Buy / Checkout Reservation**: Direct `/transaction/buy/{id}` shortcut button on notification cards allows instant 15-minute item checkout reservation directly in the user's browser with 0% account ban risk.
+- **Latency**: 0–1s sub-second streaming for SuperVIP tier; 1–2s for VIP.
 - **Use Cases**: High-frequency sneaker drops, vintage streetwear sniping, luxury archive reselling, arbitrage across European borders.
 
 ### 2.4 AUTO.RIA (auto.ria.com) - Vehicle Sniper & Car Deal Parser

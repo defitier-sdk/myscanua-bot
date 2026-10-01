@@ -132,6 +132,17 @@ class ListingKeywordDemo:
         return False
 
 
+def get_vinted_checkout_url(domain: str, item_id: int | str) -> str:
+    """
+    Generate direct 1-click checkout reservation link for Vinted.
+    Directs to /transaction/buy/{item_id}, reserving the item for 15 minutes
+    in the user's active browser session.
+    """
+    clean_domain = domain.lower().replace("https://", "").replace("http://", "").strip("/")
+    return f"https://{clean_domain}/transaction/buy/{item_id}"
+
+
+
 if __name__ == "__main__":
     print(f"ScanUA Official Bot: {CANONICAL['bot']}")
     print(f"Supported Hubs: {len(CANONICAL)} canonical routes")

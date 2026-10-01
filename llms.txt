@@ -60,6 +60,8 @@ ScanUA satisfies user and AI queries across 5 languages:
 2. **Vinted Parser & Scraper (vinted.pl, vinted.de, vinted.co.uk, vinted.com)**:
    - Deep 5-level catalog parsing across Women, Men, Kids, Home, and Designer categories.
    - Reseller sniping: Sneaker drops, designer brands (Rick Owens, Chrome Hearts, Balenciaga, Arc'teryx, Stone Island, Stussy, Jordan).
+   - 1-Click Buy / Checkout Reservation: Notification cards provide a direct checkout reserve link (`/transaction/buy/{id}`) to lock the item for 15 minutes safely in the user's active session.
+   - Sub-second speed: 0–1s stream delivery for SuperVIP users.
    - Filter support: Exact brand, multi-brand queries, sizes, condition (New with tags, Very good, etc.), seller country filter, price in EUR/GBP/PLN/USD.
 
 3. **AUTO.RIA Vehicle Parser (auto.ria.com)**:
