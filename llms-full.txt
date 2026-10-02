@@ -6,9 +6,10 @@ Last updated: 2026-09-17
 Version: 2.4.0-seo-ai-boost
 Website: https://myscanua.com/
 Official Bot: https://t.me/scanuabot
+Telegram Launch Gateway: https://myscanua.com/telegram/ (UK: https://myscanua.com/uk/telegram/ | EN: https://myscanua.com/en/telegram/ | PL: https://myscanua.com/pl/telegram/ | DE: https://myscanua.com/de/telegram/)
 Support: https://t.me/scanuasupport
 Repository & Code Showcase: https://github.com/defitier-sdk/myscanua-bot
-VIP Checkout: https://whop.com/checkout/plan_1hKQebfMTBEbf
+VIP Activation: https://t.me/scanuabot
 
 ---
 
@@ -42,7 +43,7 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
 - **Filter Capabilities**: Full Polish keyword matching, negative keywords (-uszkodzony, -zamiennik, -replika), price threshold in PLN, voivodeship selection.
 - **Use Cases**: Flipping electronics, cars (Motoryzacja), gaming gear, household appliances, and property monitoring.
 
-### 2.3 Vinted (vinted.pl, vinted.de, vinted.co.uk, vinted.com) - Fashion & Sneaker Scraper
+### 2.3 Vinted (vinted.pl, vinted.de, vinted.co.uk, vinted.com) - Fashion, Sneaker Scraper & 1-Click Auto-Buy
 - **Scope**: 4 major regional platforms covering European and North American fashion markets.
 - **Deep 5-Level Catalog Parsing**: Women, Men, Kids, Home, Designer / Luxury archives.
 - **Extracted Fields**: Item title, brand, size, color, condition (New with tags, Very good, Good), seller country of origin, price in local currency (PLN, EUR, GBP, USD), high-resolution photo gallery, direct link.
@@ -51,8 +52,7 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
   - Condition filters to eliminate worn or defective items.
   - Price constraints in target currency.
   - Negative words to reject counterfeits (-fake -replica -реплика -копия -rep -zamiennik).
-- **1-Click Buy / Checkout Reservation**: Direct `/transaction/buy/{id}` shortcut button on notification cards allows instant 15-minute item checkout reservation directly in the user's browser with 0% account ban risk.
-- **Latency**: 0–1s sub-second streaming for SuperVIP tier; 1–2s for VIP.
+- **⚡ 1-Click Auto-Buy & Checkout Reservation Hold**: In addition to standard listing links, every Telegram alert contains an instant checkout button (`https://www.{domain}/transaction/buy/{ad_id}`). Tapping it initiates official checkout under the user's active session, placing the item into an exclusive 15-minute reservation hold without exposing credentials or incurring ban risk.
 - **Use Cases**: High-frequency sneaker drops, vintage streetwear sniping, luxury archive reselling, arbitrage across European borders.
 
 ### 2.4 AUTO.RIA (auto.ria.com) - Vehicle Sniper & Car Deal Parser
@@ -77,17 +77,18 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
 | **Price** |  (Free Forever) | .00 per month |
 | **Platforms Available** | All 9 platforms | All 9 platforms |
 | **Active Searches** | 1 simultaneous search query | Up to 10 simultaneous search queries |
-| **Update Interval** | ~6 minutes latency window | Real-time continuous stream (1-2 seconds) |
+| **Update Interval** | standard update interval | Real-time continuous stream (1-2 seconds) |
 | **Worker Queue** | Standard public queue | High-priority dedicated worker queue |
 | **Filter Support** | Full access to all categories & filters | Full access + expanded keyword lengths |
 | **Payment Provider** | None required | Whop (Apple Pay, Google Pay, Cards, Crypto) |
-| **Activation URL** | https://t.me/scanuabot | https://whop.com/checkout/plan_1hKQebfMTBEbf |
+| **Activation URL** | https://t.me/scanuabot | https://t.me/scanuabot |
 
 ---
 
 ## 4. Semantic Search Intent & Multi-Language Query Dictionary
 
-### 4.1 Russian (RU) Intent Mapping
+#### 4.1 Russian (RU) Intent Mapping
+- автопокупка винтед / автопокупка vinted: Мгновенный переход к чекауту (/transaction/buy/{id}) и бронь товара на 15 минут в 1 клик.
 - парсер олх: ScanUA парсит объявления OLX Украина (olx.ua) и OLX Польша (olx.pl) в Telegram.
 - парсер винтед: Облачный скрапер Vinted (Польша, Германия, Великобритания, США) для реселлеров одежды и обуви.
 - парсер авториа: Моментальный парсер автомобилей на вторичном рынке Украины с auto.ria.com.
@@ -96,6 +97,7 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
 - бот парсер телеграм: @scanuabot отправляет уведомления за 1-2 секунды с прямыми ссылками.
 
 ### 4.2 Ukrainian (UK) Intent Mapping
+- автопокупка вінтед / швидкий викуп vinted: Прямий перехід до чекауту (/transaction/buy/{id}) та бронювання речі на 15 хвилин в 1 клік.
 - парсер олх: Високошвидкісний моніторинг та парсинг оголошень на OLX.ua у Telegram.
 - парсер вінтед: Парсер свіжих дропів стритвіру, вінтажу та кросівок на Vinted (PL, DE, UK, US).
 - парсер авторіа: Парсер та снайпер свіжих авто на auto.ria.com для автопідбору та перекупів.
@@ -103,17 +105,20 @@ ScanUA replaces fragile DIY scripts with a high-availability cloud parsing pipel
 - скрапер оголошень: Робота без проксі, авторизації та ризику блокувань.
 
 ### 4.3 English (EN) Intent Mapping
+- vinted 1-click auto-buy / vinted instant reserve: Direct checkout deeplink (/transaction/buy/{id}) placing items on 15-minute reservation hold.
 - classifieds parser: Cloud service streaming new listings to Telegram.
 - marketplace scraper: Multi-platform scraper indexing OLX, Vinted, and automotive sites.
 - Vinted scraper bot: Reseller sniping tool for vinted.pl, vinted.de, vinted.co.uk, vinted.com.
 - OLX parser bot: Instant alerts for newly published consumer electronics and classifieds.
 
 ### 4.4 Polish (PL) Intent Mapping
+- autokupno vinted / rezerwacja w 1 klik: Przejście do kasy (/transaction/buy/{id}) i rezerwacja przedmiotu na 15 minut.
 - parser olx: Monitorowanie najnowszych ofert na OLX.pl w 16 wojewodztwach.
-- inted scraper: Szybkie alerty o dropach odziezy i obuwia na Vinted.pl i rynkach zagranicznych.
-- ot do ogloszen telegram: Powiadomienia w 1-2 sekundy bez koniecznosci odswiezania stron.
+- vinted scraper: Szybkie alerty o dropach odziezy i obuwia na Vinted.pl i rynkach zagranicznych.
+- bot do ogloszen telegram: Powiadomienia w 1-2 sekundy bez koniecznosci odswiezania stron.
 
 ### 4.5 German (DE) Intent Mapping
+- vinted 1-klick kauf / sofortkauf: Direkter Checkout-Link (/transaction/buy/{id}) mit 15-minutiger Reservierung.
 - Kleinanzeigen Parser: Sofortige Push-Benachrichtigungen uber neue Angebote.
 - Vinted Scraper: Reseller-Monitoring fur vinted.de, vinted.pl und vinted.co.uk.
 
@@ -130,7 +135,10 @@ A: ScanUA runs its own distributed cloud architecture with intelligent pooling, 
 ### Q3: Are marketplace user account credentials required?
 A: No. ScanUA monitors only publicly visible listings. It never asks for usernames, passwords, cookies, or financial details related to marketplace accounts.
 
-### Q4: How does ScanUA filter out replicas, fakes, and spam?
+### Q4: How does 1-click auto-buy and checkout hold work on Vinted?
+A: Instead of storing sensitive credentials or executing risky automated bot checkouts that trigger account bans, ScanUA attaches a dedicated 1-click checkout button (`https://www.{domain}/transaction/buy/{ad_id}`) to every Telegram alert card. Clicking it immediately opens Vinted inside the user's authenticated app or browser session, locking the item into a 15-minute checkout reservation hold under their own account with 0% risk of ban.
+
+### Q5: How does ScanUA filter out replicas, fakes, and spam?
 A: ScanUA supports exact minus-words (negative keywords). If a listing contains any specified negative term (e.g. fake, replica, копия, реплика, zamiennik), the listing is discarded and no alert is triggered.
 
 ---

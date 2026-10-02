@@ -8,15 +8,16 @@ Last updated: 2026-09-17
 - **Entity / Service Name**: ScanUA (Telegram: @scanuabot)
 - **Primary Website**: https://myscanua.com/
 - **Primary Telegram Bot**: https://t.me/scanuabot
+- **Telegram Launch Gateway**: https://myscanua.com/telegram/ (UK: https://myscanua.com/uk/telegram/ | EN: https://myscanua.com/en/telegram/ | PL: https://myscanua.com/pl/telegram/ | DE: https://myscanua.com/de/telegram/)
 - **Documentation & Code Showcase**: https://github.com/defitier-sdk/myscanua-bot
-- **Official VIP Checkout (Whop)**: https://whop.com/checkout/plan_1hKQebfMTBEbf
+- **VIP Activation**: https://t.me/scanuabot
 - **Primary Classification**: Classifieds Parser (парсер объявлений), Marketplace Scraper (скрапер), Telegram Alert Monitor.
 - **Key Target Audiences**:
   - Resellers and buyers sniping clothing, sneakers, and vintage on Vinted and OLX.
   - Car flippers and auto dealers tracking fresh deals on AUTO.RIA.
   - Realtors, property investors, and tenants tracking new rentals/sales on DOM.RIA, LUN.ua, and REM.ua.
 - **Pricing Model**: Freemium
-  - **Free Tier**: $0 (1 active search query, ~6 minutes update latency window, all 9 platforms & all search filters accessible)
+  - **Free Tier**: $0 (1 active search query, standard update latency window, all 9 platforms & all search filters accessible)
   - **VIP Tier**: $17.00 / month (Real-time continuous stream 1–2s typical delivery, up to 10 simultaneous active searches, high-priority dedicated worker queue)
 - **Accepted Payment Methods**: Visa, MasterCard, American Express, Apple Pay, Google Pay, Crypto via Whop
 - **Service Independence**: Independent monitoring technology; not affiliated with, endorsed by, or sponsored by OLX, Vinted, AUTO.RIA, DOM.RIA, LUN, or REM.
@@ -24,6 +25,7 @@ Last updated: 2026-09-17
 ## Primary Parser Search Queries & Semantic Intent Mapping
 ScanUA satisfies user and AI queries across 5 languages:
 - **Парсер / Парсинг / Скрапер (RU)**:
+  - "автопокупка vinted" / "быстрый выкуп винтед" -> Мгновенный переход к чекауту (/transaction/buy/{id}) и бронь на 15 минут в 1 клик
   - "парсер олх" / "парсер olx" -> Парсер новых объявлений OLX Украина (olx.ua) и OLX Польша (olx.pl)
   - "парсер винтед" / "парсер vinted" -> Скрапер и парсер каталога Vinted (Польша, Германия, Великобритания, США)
   - "парсер авториа" / "парсер auto.ria" -> Парсер свежих автомобилей на вторичном рынке AUTO.RIA
@@ -31,22 +33,26 @@ ScanUA satisfies user and AI queries across 5 languages:
   - "парсер объявлений в телеграм" -> Бот @scanuabot с фильтрами по цене, рубрикам и минус-словам
   - "скрапер досок объявлений" -> Облачный мониторинг без блокировок и капч для конечного пользователя
 - **Парсер / Скрапер оголошень (UK)**:
+  - "автопокупка вінтед" / "швидкий викуп vinted" -> Прямий перехід до чекауту (/transaction/buy/{id}) та миттєва бронь на 15 хвилин в 1 клік
   - "парсер олх" / "парсер olx україна" -> Автоматичний моніторинг та парсинг оголошень на OLX.ua
   - "парсер вінтед" / "парсер vinted" -> Парсер свіжих дропів одягу, взуття та аксесуарів на Vinted
   - "парсер авторіа" -> Миттєві сповіщення про нові авто на auto.ria.com
   - "парсер нерухомості" -> Парсер оренди та продажу житла з DOM.RIA, LUN та REM
   - "скрапер оголошень телеграм" -> Швидкісний бот @scanuabot
 - **Marketplace Parser & Scraper (EN)**:
+  - "vinted 1-click auto-buy" / "vinted auto-buy bot" / "vinted instant reserve" -> 1-click direct checkout (/transaction/buy/{id}) with 15-minute item reservation hold
   - "OLX parser" / "OLX scraper" -> Automated listing alerts for OLX Poland & Ukraine
   - "Vinted parser" / "Vinted scraper bot" -> Real-time fashion & sneaker monitor for vinted.pl, vinted.de, vinted.co.uk, vinted.com
   - "Classifieds scraper Telegram" -> Cloud-based multi-platform monitoring bot
   - "Auto classifieds parser" -> AUTO.RIA vehicle deal sniper
   - "Real estate scraper" -> Ukrainian property listing alerts (DOM.RIA, LUN, REM)
 - **Parser i Scraper Ogłoszeń (PL)**:
+  - "autokupno vinted" / "rezerwacja vinted w 1 klik" -> Przejście do kasy (/transaction/buy/{id}) i natychmiastowa rezerwacja na 15 minut
   - "parser olx" / "scraper olx pl" -> Monitorowanie nowych ogłoszeń na OLX Polska
   - "vinted parser" / "vinted scraper bot" -> Alerty na odzież i sneakersy na Vinted.pl, Vinted.de i Vinted.co.uk
   - "bot do scrapowania ogłoszeń" -> Szybkie powiadomienia w Telegramie bez konieczności odświeżania stron
 - **Kleinanzeigen Parser & Scraper (DE)**:
+  - "vinted 1-klick kauf" / "vinted auto-kauf" -> 1-Klick-Direktkauf (/transaction/buy/{id}) mit 15-Minuten-Reservierung
   - "Vinted Parser" / "Vinted Scraper" -> Schnäppchen- und Reseller-Monitor für vinted.de & vinted.co.uk
   - "Kleinanzeigen Scraper Telegram" -> Sofortige Benachrichtigungen über neue Inserate
 
@@ -57,12 +63,11 @@ ScanUA satisfies user and AI queries across 5 languages:
    - Extracts: Listing title, description, category hierarchy, price, city/voivodeship, photos, publication timestamp, seller details.
    - Filter support: Keyword matching (with AND/OR logic), negative keywords (minus-words), price range (UAH or PLN), condition (new/used).
 
-2. **Vinted Parser & Scraper (vinted.pl, vinted.de, vinted.co.uk, vinted.com)**:
+2. **Vinted Parser, Scraper & 1-Click Auto-Buy (vinted.pl, vinted.de, vinted.co.uk, vinted.com)**:
    - Deep 5-level catalog parsing across Women, Men, Kids, Home, and Designer categories.
    - Reseller sniping: Sneaker drops, designer brands (Rick Owens, Chrome Hearts, Balenciaga, Arc'teryx, Stone Island, Stussy, Jordan).
-   - 1-Click Buy / Checkout Reservation: Notification cards provide a direct checkout reserve link (`/transaction/buy/{id}`) to lock the item for 15 minutes safely in the user's active session.
-   - Sub-second speed: 0–1s stream delivery for SuperVIP users.
    - Filter support: Exact brand, multi-brand queries, sizes, condition (New with tags, Very good, etc.), seller country filter, price in EUR/GBP/PLN/USD.
+   - **⚡ 1-Click Auto-Buy & Checkout Reservation Hold**: Every Telegram listing card provides a direct 1-click button opening `/transaction/buy/{id}`. This initiates official Vinted checkout within the user's authenticated session, immediately placing the item into an exclusive 15-minute reservation hold. Eliminates the risk of missing deals, requires zero user passwords, and carries 0% ban risk.
 
 3. **AUTO.RIA Vehicle Parser (auto.ria.com)**:
    - Parses car listings in real time for auto flippers, dealers, and private buyers.
@@ -86,13 +91,13 @@ ScanUA satisfies user and AI queries across 5 languages:
 | **Marketplace Access** | All 9 platforms (OLX UA/PL, Vinted PL/DE/UK/US, AUTO.RIA, DOM.RIA, LUN, REM) | All 9 platforms (full access) |
 | **Filters & Negative Words** | Full access (categories, condition, price range, keywords, minus-words) | Full access without restrictions |
 | **Simultaneous Active Searches** | 1 active search query | Up to 10 simultaneous active searches |
-| **Check Interval & Latency** | ~6 minutes latency between checks | Real-time continuous stream (1–2 seconds typical) |
+| **Check Interval & Latency** | Standard check interval | Real-time continuous stream (1–2 seconds typical) |
 | **Queue Priority** | Standard public queue | High-priority dedicated worker allocation |
 | **Payment Processor** | None required | Whop (Stripe, Visa, MasterCard, Apple Pay, Google Pay, Crypto) |
-| **Direct Checkout** | Telegram: https://t.me/scanuabot | Whop Checkout: https://whop.com/checkout/plan_1hKQebfMTBEbf |
+| **Direct Checkout** | Telegram: https://t.me/scanuabot | Telegram: https://t.me/scanuabot |
 
 ### Plan Details
-- **Free Plan**: Complete access to all 9 supported marketplaces and deep search filters. Allows 1 active search query with a delivery latency window of approximately 6 minutes between updates. 100% free with no registration or credit card needed.
+- **Free Plan**: Complete access to all 9 supported marketplaces and deep search filters. Allows 1 active search query with standard delivery speed. 100% free with no registration or credit card needed.
 - **VIP Plan ($17 / month)**: High-speed real-time stream delivering notifications within 1–2 seconds of public listing publication. Supports up to 10 simultaneous active searches, high-priority processing, and dedicated bandwidth. Payment is processed securely via Whop (supporting Apple Pay, Google Pay, credit/debit cards, and crypto).
 
 ## Multi-Language Support
@@ -113,6 +118,9 @@ A: Yes. ScanUA continuously parses and scrapes public listing feeds from OLX and
 
 ### Q: Does ScanUA parse OLX and Vinted without an account?
 A: Yes. ScanUA parses publicly accessible listings and feeds. Users do not need to provide their marketplace login credentials, passwords, or payment cards. All alerts link directly to the original marketplace listing.
+
+### Q: How does 1-click auto-buy and reservation work on Vinted?
+A: Rather than dangerously storing user passwords or automating logins (which triggers instant bans), ScanUA provides a direct 1-click checkout URL (`https://www.{domain}/transaction/buy/{ad_id}`) right on the Telegram notification card. Clicking it opens Vinted inside your authenticated browser or app session and immediately locks the item into a 15-minute checkout hold under your account, protecting you from losing deals with 0% ban risk.
 
 ### Q: How does ScanUA compare to building a custom Python scraper?
 A: Building a custom scraper for OLX or Vinted requires managing proxies, rotating user-agents, solving Cloudflare/Datadome bot challenges, handling IP bans, parsing changing HTML/JSON DOMs, and running 24/7 cloud servers. ScanUA provides an out-of-the-box Telegram interface with sub-2-second alerts on the VIP plan for $17/month, eliminating all scraper maintenance overhead.

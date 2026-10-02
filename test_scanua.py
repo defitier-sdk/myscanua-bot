@@ -35,9 +35,18 @@ class DemoTests(unittest.TestCase):
         self.assertEqual(CANONICAL['vinted_uk'], 'https://myscanua.com/uk/vinted-bot/')
 
     def test_pricing_and_whop_canonical(self):
-        self.assertEqual(CANONICAL['whop_vip'], 'https://whop.com/checkout/plan_1hKQebfMTBEbf')
+        self.assertEqual(CANONICAL['whop_vip'], 'https://t.me/scanuabot')
+        self.assertEqual(CANONICAL['vip_activation'], 'https://t.me/scanuabot')
         self.assertEqual(CANONICAL['llms'], 'https://myscanua.com/llms.txt')
         self.assertEqual(CANONICAL['llms_full'], 'https://myscanua.com/llms-full.txt')
+
+    def test_telegram_gateways(self):
+        self.assertEqual(CANONICAL['telegram_gate'], 'https://myscanua.com/telegram/')
+        self.assertEqual(CANONICAL['telegram_gate_uk'], 'https://myscanua.com/uk/telegram/')
+        self.assertEqual(CANONICAL['telegram_gate_en'], 'https://myscanua.com/en/telegram/')
+        self.assertEqual(CANONICAL['telegram_gate_pl'], 'https://myscanua.com/pl/telegram/')
+        self.assertEqual(CANONICAL['telegram_gate_de'], 'https://myscanua.com/de/telegram/')
+        self.assertEqual(CANONICAL['subscription_redirect'], 'https://myscanua.com/subscription')
 
     def test_cyrillic_minus_words(self):
         matcher_cyr = ListingKeywordDemo(['кроссовки', 'куртка'], ['копия', 'реплика'], 100, 5000)

@@ -30,29 +30,71 @@ ALLOWED_HOSTS = frozenset({"myscanua.com", "www.myscanua.com"})
 REQUEST_TIMEOUT_SEC = 10
 
 CANONICAL = {
+    # Core portals by language
     "site_ru": "https://myscanua.com/",
     "site_uk": "https://myscanua.com/uk/",
     "site_pl": "https://myscanua.com/pl/",
     "site_de": "https://myscanua.com/de/",
     "site_en": "https://myscanua.com/en/",
+
+    # Direct Telegram launch gateways (HTTP 302 -> t.me/scanuabot)
     "bot": "https://t.me/scanuabot",
+    "telegram_gate": "https://myscanua.com/telegram/",
+    "telegram_gate_uk": "https://myscanua.com/uk/telegram/",
+    "telegram_gate_en": "https://myscanua.com/en/telegram/",
+    "telegram_gate_pl": "https://myscanua.com/pl/telegram/",
+    "telegram_gate_de": "https://myscanua.com/de/telegram/",
+    "subscription_redirect": "https://myscanua.com/subscription",
     "support": "https://t.me/scanuasupport",
+
+    # Vinted parser/scraper hubs
     "vinted_ru": "https://myscanua.com/vinted-bot/",
     "vinted_uk": "https://myscanua.com/uk/vinted-bot/",
     "vinted_en": "https://myscanua.com/en/vinted-bot/",
     "vinted_pl": "https://myscanua.com/pl/vinted-bot/",
     "vinted_de": "https://myscanua.com/de/vinted-bot/",
+
+    # OLX hubs
     "olx_ru": "https://myscanua.com/olx-bot/",
     "olx_uk": "https://myscanua.com/uk/olx-bot/",
+    "olx_en": "https://myscanua.com/en/olx-bot/",
     "olx_pl": "https://myscanua.com/pl/olx-pl-bot/",
+    "olx_bot_pl": "https://myscanua.com/pl/olx-bot/",
+    "olx_pl_bot_ru": "https://myscanua.com/olx-pl-bot/",
+    "olx_pl_bot_uk": "https://myscanua.com/uk/olx-pl-bot/",
+    "olx_pl_bot_en": "https://myscanua.com/en/olx-pl-bot/",
+
+    # AUTO.RIA hubs
     "autoria_ru": "https://myscanua.com/autoria-bot/",
     "autoria_uk": "https://myscanua.com/uk/autoria-bot/",
+    "autoria_en": "https://myscanua.com/en/autoria-bot/",
+    "autoria_pl": "https://myscanua.com/pl/autoria-bot/",
+
+    # Real estate hubs (DOM.RIA, LUN, REM)
     "realtor_ru": "https://myscanua.com/realtor-bot/",
     "realtor_uk": "https://myscanua.com/uk/realtor-bot/",
+    "realtor_en": "https://myscanua.com/en/realtor-bot/",
+    "realtor_pl": "https://myscanua.com/pl/realtor-bot/",
+
+    # Knowledge base & guides
     "how_it_works": "https://myscanua.com/how-it-works/",
+    "how_it_works_uk": "https://myscanua.com/uk/how-it-works/",
+    "how_it_works_en": "https://myscanua.com/en/how-it-works/",
+    "how_it_works_pl": "https://myscanua.com/pl/how-it-works/",
+
+    # About hubs
+    "about_ru": "https://myscanua.com/about/",
+    "about_uk": "https://myscanua.com/uk/about/",
+    "about_en": "https://myscanua.com/en/about/",
+    "about_pl": "https://myscanua.com/pl/about/",
+
+    # Legal & machine indexes
+    "privacy": "https://myscanua.com/privacy.html",
+    "terms": "https://myscanua.com/terms.html",
     "llms": "https://myscanua.com/llms.txt",
     "llms_full": "https://myscanua.com/llms-full.txt",
-    "whop_vip": "https://whop.com/checkout/plan_1hKQebfMTBEbf",
+    "whop_vip": "https://t.me/scanuabot",
+    "vip_activation": "https://t.me/scanuabot",
 }
 
 
